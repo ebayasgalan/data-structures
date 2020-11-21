@@ -22,11 +22,13 @@ BinarySearchTree.prototype = {
     }
   },
   depthFirstLog: function(iteratorFunc) {
-    // if (order === 'pre-order') { iteratorFunc(this.value); }
-    if (this.left) { this.left.depthFirstLog(iteratorFunc(this.value)); }
-    // if (order === 'in-order') { iteratorFunc(this.value); }
-    if (this.right) { this.right.depthFirstLog(iteratorFunc(this.value)); }
-    // if (order === 'post-order') { iteratorFunc(this.value); }
+    iteratorFunc(this.value);
+    if (this.left) {
+      this.left.depthFirstLog(iteratorFunc);
+    }
+    if (this.right) {
+      this.right.depthFirstLog(iteratorFunc);
+    }
   }
 };
 
@@ -34,3 +36,29 @@ BinarySearchTree.prototype = {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+//  // iteratorFunc(this.value);
+// // if (this.right) { this.right.depthFirstLog(iteratorFunc(this.value)); }
+// if (this.left) {
+//   console.log('left branch exists', this.left);
+//   // this.left.depthFirstLog(iterate(this.value));
+// }
+// if (this.right) {
+//   console.log('right branch exists', this.righ);
+//   // this.right.depthFirstLog(iterate(this.value));
+// }
+
+// // if (this.left) { this.left.depthFirstLog(iteratorFunc(this.value)); }
+
+
+// var recurse = function(bst) {
+//   iteratorFunc.call(bst, bst.value);
+//   if (bst.left !== undefined) {
+//     recurse(bst.left);
+//   }
+//   if (bst.right !== undefined) {
+//     recurse(bst.right);
+//   }
+// };
+// console.log(this);
+// recurse(this);
