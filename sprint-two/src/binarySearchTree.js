@@ -5,7 +5,7 @@ var BinarySearchTree = function(value) {
   binaryTree.left = null;
   return binaryTree;
 };
-
+// O(n) time complexity: linear
 BinarySearchTree.prototype = {
   insert: function(value) {
     if (value <= this.value) {
@@ -14,6 +14,7 @@ BinarySearchTree.prototype = {
       if (!this.right) { this.right = BinarySearchTree(value); } else { this.right.insert(value); }
     }
   },
+  // O(n) time complexity: linear
   contains: function(value) {
     if (value === this.value) { return true; } else if (value < this.value) {
       if (!this.left) { return false; } else { return this.left.contains(value); }
@@ -21,6 +22,7 @@ BinarySearchTree.prototype = {
       if (!this.right) { return false; } else { return this.right.contains(value); }
     }
   },
+  // O(n) time complexity: linear
   depthFirstLog: function(iteratorFunc) {
     iteratorFunc(this.value);
     if (this.left) {
@@ -31,34 +33,3 @@ BinarySearchTree.prototype = {
     }
   }
 };
-
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
-
-//  // iteratorFunc(this.value);
-// // if (this.right) { this.right.depthFirstLog(iteratorFunc(this.value)); }
-// if (this.left) {
-//   console.log('left branch exists', this.left);
-//   // this.left.depthFirstLog(iterate(this.value));
-// }
-// if (this.right) {
-//   console.log('right branch exists', this.righ);
-//   // this.right.depthFirstLog(iterate(this.value));
-// }
-
-// // if (this.left) { this.left.depthFirstLog(iteratorFunc(this.value)); }
-
-
-// var recurse = function(bst) {
-//   iteratorFunc.call(bst, bst.value);
-//   if (bst.left !== undefined) {
-//     recurse(bst.left);
-//   }
-//   if (bst.right !== undefined) {
-//     recurse(bst.right);
-//   }
-// };
-// console.log(this);
-// recurse(this);
