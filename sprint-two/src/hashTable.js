@@ -3,7 +3,7 @@ var HashTable = function() {
   this._storage = LimitedArray(this._limit);
 };
 
-var Hashnode = function(key, value, next) {
+var HashNode = function (key, value, next) {
   this.key = key;
   this.value = value;
   this.next = next || null;
@@ -11,12 +11,22 @@ var Hashnode = function(key, value, next) {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  if (this._storage.get(index) !== undefined) {
+    this._storage[index] = new Array();
+    console.log('testing: ', this._storage[index]);
+    for (var i = 0; i < this._storage[index]; i++) {
+      if (this._storage[index][i] === undefined) {
+        this._storage[index][i] = v;
+      }
+    }
+  }
   this._storage.set(index, v);
+  console.log('thisStorage: ', this._storage.get(index));
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  console.log(this._storage.get(index));
+  // console.log(this._storage.get(index));
   return this._storage.get(index);
 };
 
@@ -25,27 +35,9 @@ HashTable.prototype.remove = function(k) {
   this._storage.set(index, undefined);
 };
 
-
-
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-// if (this._storage.get(index) === undefined) {
-//   this._storage.set(index, v);
-// } else if (this._storage.get(index) === v) {
-//   this._storage.set(index, v);
-// } else {
-//   var currentNode = this._storage.get(index);
-//   while (currentNode.next) {
-//     if (currentNode.next.key === k) {
-//       currentNode.next.value = v;
-//       return;
-//     }
-//     currentNode = currentNode.next;
-//   }
-//   currentNode.next = new Hashnode(k, v);
-// }
 
 // HashTable.prototype.hash = function(key) {
 //   var total = 0;
