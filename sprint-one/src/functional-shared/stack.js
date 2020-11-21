@@ -9,9 +9,8 @@ var Stack = function() {
   };
 
   // Implement the methods below
-  someInstance.size = stackMethods.size;
-  someInstance.push = stackMethods.push;
-  someInstance.pop = stackMethods.pop;
+
+  _.extend(someInstance, stackMethods);
 
   return someInstance;
 };
