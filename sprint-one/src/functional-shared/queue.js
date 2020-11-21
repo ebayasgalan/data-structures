@@ -12,11 +12,7 @@ var Queue = function() {
 
   // Implement the methods below
 
-  someInstance.enqueue = queueMethods.enqueue;
-
-  someInstance.dequeue = queueMethods.dequeue;
-
-  someInstance.size = queueMethods.size;
+  _.extend(someInstance, queueMethods);
 
   return someInstance;
 };
